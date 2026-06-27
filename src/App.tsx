@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 import { HeadphonesPanel } from './components/HeadphonesPanel'
+import { MicrophonePanel } from './components/MicrophonePanel'
 
-type Module = 'headphones'
+type Module = 'headphones' | 'microphone'
 
 const MODULES: { id: Module; label: string }[] = [
   { id: 'headphones', label: 'Headphones / Speakers' },
+  { id: 'microphone', label: 'Microphone' },
 ]
 
 const STYLES = {
@@ -40,6 +42,7 @@ export default function App() {
         </nav>
         <main className={STYLES.panelArea}>
           {active === 'headphones' && <HeadphonesPanel />}
+          {active === 'microphone' && <MicrophonePanel />}
         </main>
       </div>
     </div>
