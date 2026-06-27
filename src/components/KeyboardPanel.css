@@ -1,0 +1,76 @@
+.keyboard-panel h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  margin-bottom: 6px;
+}
+
+.keyboard-panel .description {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.kb-status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.kb-reset-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.kb-reset-btn:hover {
+  background: var(--surface-raised);
+  color: var(--text);
+}
+
+.kb-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.kb-canvas {
+  position: relative;
+}
+
+.kb-key {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 500;
+  user-select: none;
+  box-sizing: border-box;
+  transition: background 0.08s, border-color 0.08s, color 0.08s;
+}
+
+.kb-key.tested {
+  background: #1a3a2a;
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.kb-key.pressed {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}

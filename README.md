@@ -20,6 +20,7 @@ If you find this useful, feel free to leave a star to help others find it!
 - Output device picker with refresh
 - Live input level meter with peak-hold for microphone testing
 - Record and play back to hear exactly what your mic captures
+- Full keyboard layout with per-key tested/pressed tracking
 - All audio processing handled locally in the browser via the Web Audio API
 
 ---
@@ -31,6 +32,7 @@ If you find this useful, feel free to leave a star to help others find it!
 | --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | Headphones / speakers | Pick an output device, play a tone to the left channel, right channel, or both                             |
 | Microphone            | Pick an input device, watch the live input level, and record then play back to hear what your mic captures |
+| Keyboard              | Press keys to see them light up; tracks which keys have been tested                                        |
 
 
 ---

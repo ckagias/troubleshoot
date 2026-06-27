@@ -59,3 +59,7 @@
   padding: 32px;
   max-width: 680px;
 }
+
+.panel-area--wide {
+  max-width: none;
+}

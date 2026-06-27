@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import { HeadphonesPanel } from './components/HeadphonesPanel'
 import { MicrophonePanel } from './components/MicrophonePanel'
+import { KeyboardPanel } from './components/KeyboardPanel'
 
-type Module = 'headphones' | 'microphone'
+type Module = 'headphones' | 'microphone' | 'keyboard'
 
 const MODULES: { id: Module; label: string }[] = [
   { id: 'headphones', label: 'Headphones / Speakers' },
   { id: 'microphone', label: 'Microphone' },
+  { id: 'keyboard', label: 'Keyboard' },
 ]
 
 const STYLES = {
@@ -17,7 +19,7 @@ const STYLES = {
   body: 'app-body',
   sidebar: 'sidebar',
   sidebarBtn: (active: boolean) => `sidebar-btn${active ? ' active' : ''}`,
-  panelArea: 'panel-area',
+  panelArea: (wide: boolean) => `panel-area${wide ? ' panel-area--wide' : ''}`,
 }
 
 export default function App() {
@@ -40,9 +42,10 @@ export default function App() {
             </button>
           ))}
         </nav>
-        <main className={STYLES.panelArea}>
+        <main className={STYLES.panelArea(active === 'keyboard')}>
           {active === 'headphones' && <HeadphonesPanel />}
           {active === 'microphone' && <MicrophonePanel />}
+          {active === 'keyboard' && <KeyboardPanel />}
         </main>
       </div>
     </div>
