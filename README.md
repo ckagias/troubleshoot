@@ -22,6 +22,7 @@ If you find this useful, feel free to leave a star to help others find it!
 - Record and play back to hear exactly what your mic captures
 - Full keyboard layout with per-key tested/pressed tracking
 - Mouse button click counter with scroll wheel and side button detection
+- Gamepad input tester with SVG controller diagram, per-button press counters, and analog trigger meters
 - All processing handled locally in the browser via Web APIs
 
 ---
@@ -35,6 +36,7 @@ If you find this useful, feel free to leave a star to help others find it!
 | Microphone            | Pick an input device, watch the live input level, and record then play back to hear what your mic captures |
 | Keyboard              | Press keys to see them light up; tracks which keys have been tested                                        |
 | Mouse                 | Visual mouse diagram; counts clicks per button, scroll up/down events, and detects side buttons            |
+| Controller            | SVG DualSense-style diagram; tracks all buttons, analog sticks, and trigger depth via the Gamepad API      |
 
 
 ---

@@ -4,14 +4,16 @@ import { HeadphonesPanel } from './components/HeadphonesPanel'
 import { MicrophonePanel } from './components/MicrophonePanel'
 import { KeyboardPanel } from './components/KeyboardPanel'
 import { MousePanel } from './components/MousePanel'
+import { ControllerPanel } from './components/ControllerPanel'
 
-type Module = 'headphones' | 'microphone' | 'keyboard' | 'mouse'
+type Module = 'headphones' | 'microphone' | 'keyboard' | 'mouse' | 'controller'
 
 const MODULES: { id: Module; label: string }[] = [
   { id: 'headphones', label: 'Headphones / Speakers' },
   { id: 'microphone', label: 'Microphone' },
   { id: 'keyboard', label: 'Keyboard' },
   { id: 'mouse', label: 'Mouse' },
+  { id: 'controller', label: 'Controller' },
 ]
 
 const STYLES = {
@@ -49,6 +51,7 @@ export default function App() {
           {active === 'microphone' && <MicrophonePanel />}
           {active === 'keyboard' && <KeyboardPanel />}
           {active === 'mouse' && <MousePanel />}
+          {active === 'controller' && <ControllerPanel />}
         </main>
       </div>
     </div>
