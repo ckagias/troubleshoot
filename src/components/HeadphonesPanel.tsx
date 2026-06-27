@@ -1,19 +1,26 @@
 import { useState, useRef, useEffect } from 'react'
-import './HeadphonesPanel.css'
 import { useOutputDevices } from '../hooks/useOutputDevices'
 
 type Channel = 'left' | 'right' | 'both'
 
 const STYLES = {
-  panel: 'headphones-panel',
-  description: 'description',
-  deviceRow: 'device-row',
-  deviceSelect: 'device-select',
-  refreshBtn: 'refresh-btn',
-  error: 'error-msg',
-  channelBtns: 'channel-btns',
-  channelBtn: (active: boolean) => `channel-btn${active ? ' active' : ''}`,
-  stopBtn: 'stop-btn',
+  panel: 'space-y-6',
+  title: 'text-lg font-semibold tracking-tight',
+  description: 'text-sm text-text-muted leading-relaxed',
+  deviceRow: 'flex items-center gap-2.5',
+  deviceLabel: 'text-sm text-text-muted whitespace-nowrap',
+  deviceSelect: 'flex-1 min-w-0 bg-surface border border-border text-text text-sm px-2.5 py-1.5 rounded-lg focus:outline-2 focus:outline-accent focus:outline-offset-1',
+  refreshBtn: 'bg-surface border border-border text-text-muted text-sm px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors hover:bg-surface-raised hover:text-text',
+  error: 'text-sm text-danger',
+  channelBtns: 'flex gap-2.5',
+  channelBtn: (active: boolean) =>
+    [
+      'flex-1 py-2.5 rounded-lg text-sm font-medium border transition-colors',
+      active
+        ? 'bg-accent border-accent text-white'
+        : 'bg-surface border-border text-text-muted hover:bg-surface-raised hover:text-text',
+    ].join(' '),
+  stopBtn: 'bg-surface border border-border text-text-muted text-sm px-5 py-2 rounded-lg transition-colors hover:bg-surface-raised hover:text-text disabled:opacity-40 disabled:cursor-not-allowed',
 }
 
 const CHANNELS: { id: Channel; label: string }[] = [
@@ -33,7 +40,6 @@ export function HeadphonesPanel() {
   const splitterRef = useRef<ChannelSplitterNode | null>(null)
   const mergerRef = useRef<ChannelMergerNode | null>(null)
 
-  // Auto-select first device when list populates
   useEffect(() => {
     if (devices.length > 0 && !selectedId) {
       setSelectedId(devices[0].id)
@@ -58,9 +64,7 @@ export function HeadphonesPanel() {
     setPlayError(null)
 
     try {
-      const options: AudioContextOptions = {}
-      // setSinkId is non-standard but widely supported; skip if not available
-      const ctx = new AudioContext(options)
+      const ctx = new AudioContext()
       ctxRef.current = ctx
 
       if (selectedId && 'setSinkId' in ctx) {
@@ -79,12 +83,8 @@ export function HeadphonesPanel() {
 
       osc.connect(splitter)
 
-      if (channel === 'left' || channel === 'both') {
-        splitter.connect(merger, 0, 0)
-      }
-      if (channel === 'right' || channel === 'both') {
-        splitter.connect(merger, 0, 1)
-      }
+      if (channel === 'left' || channel === 'both') splitter.connect(merger, 0, 0)
+      if (channel === 'right' || channel === 'both') splitter.connect(merger, 0, 1)
 
       merger.connect(ctx.destination)
       osc.start()
@@ -99,53 +99,41 @@ export function HeadphonesPanel() {
 
   return (
     <div className={STYLES.panel}>
-      <h2>Headphones / Speakers Test</h2>
-      <p className={STYLES.description}>
-        Pick your output device, then test left, right, and both channels to
-        confirm your audio is wired and working correctly.
-      </p>
+      <div>
+        <h2 className={STYLES.title}>Headphones / Speakers Test</h2>
+        <p className={STYLES.description}>
+          Pick your output device, then test left, right, and both channels to
+          confirm your audio is wired and working correctly.
+        </p>
+      </div>
 
       <div className={STYLES.deviceRow}>
-        <label htmlFor="output-select">Output device</label>
+        <label htmlFor="output-select" className={STYLES.deviceLabel}>Output device:</label>
         <select
           id="output-select"
           className={STYLES.deviceSelect}
           value={selectedId}
           onChange={(e) => setSelectedId(e.target.value)}
         >
-          {devices.length === 0 && (
-            <option value="">No outputs found</option>
-          )}
+          {devices.length === 0 && <option value="">No outputs found</option>}
           {devices.map((d) => (
-            <option key={d.id} value={d.id}>
-              {d.label}
-            </option>
+            <option key={d.id} value={d.id}>{d.label}</option>
           ))}
         </select>
-        <button className={STYLES.refreshBtn} onClick={refresh}>
-          Refresh
-        </button>
+        <button className={STYLES.refreshBtn} onClick={refresh} aria-label="Refresh output devices">Refresh</button>
       </div>
 
       {error && <p className={STYLES.error}>{error}</p>}
 
       <div className={STYLES.channelBtns}>
         {CHANNELS.map(({ id, label }) => (
-          <button
-            key={id}
-            className={STYLES.channelBtn(playing === id)}
-            onClick={() => playChannel(id)}
-          >
+          <button key={id} className={STYLES.channelBtn(playing === id)} onClick={() => playChannel(id)} aria-pressed={playing === id}>
             {label}
           </button>
         ))}
       </div>
 
-      <button
-        className={STYLES.stopBtn}
-        disabled={playing === null}
-        onClick={stopTone}
-      >
+      <button className={STYLES.stopBtn} disabled={playing === null} onClick={stopTone}>
         Stop
       </button>
     </div>
