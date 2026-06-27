@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { DeviceInfo } from './useOutputDevices'
 
-export type { DeviceInfo }
-
 export function useInputDevices() {
   const [devices, setDevices] = useState<DeviceInfo[]>([])
   const [error, setError] = useState<string | null>(null)

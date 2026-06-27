@@ -1,42 +1,44 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-raised: #242424;
+  --color-border: #2e2e2e;
+  --color-text: #e8e8e8;
+  --color-text-muted: #888888;
+  --color-accent: #0e7490;
+  --color-accent-hover: #0c6377;
+  --color-danger: #e5484d;
+  --color-warning: #f5b800;
+  --color-success: #30a46c;
 }
 
-:root {
-  --bg: #0f0f0f;
-  --surface: #1a1a1a;
-  --surface-raised: #242424;
-  --border: #2e2e2e;
-  --text: #e8e8e8;
-  --text-muted: #888;
-  --accent: #0e7490;
-  --accent-hover: #0c6377;
-  --danger: #e5484d;
-  --warning: #f5b800;
-  --success: #30a46c;
-  --radius: 8px;
-  --radius-lg: 12px;
-}
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  min-height: 100vh;
-}
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
 
-select {
-  font-family: inherit;
-  cursor: pointer;
+  select {
+    font-family: inherit;
+    cursor: pointer;
+  }
 }

@@ -2,13 +2,13 @@
 
 ### A browser-based hardware tester built with React and TypeScript
 
-[About](#about) • [Features](#features) • [Modules](#modules) • [Installation](#installation) • [Building](#building) • [Dependencies](#dependencies) • [License](#license)
+[About](#about) • [Features](#features) • [Modules](#modules) • [Screenshots](#screenshots) • [Installation](#installation) • [Building](#building) • [Dependencies](#dependencies) • [License](#license)
 
 ---
 
 ## About
 
-A web port of [Trouble](https://github.com/ckagias/Hardware-Doctor), the hardware testing app. Test your headphones, speakers, microphone, keyboard, and mouse directly in the browser. No install required, all processing runs locally via Web APIs.
+A web port of [Trouble](https://github.com/ckagias/hardware-doctor), the hardware testing app. Test your headphones, speakers, microphone, keyboard, and mouse directly in the browser. No install required, all processing runs locally via Web APIs.
 
 If you find this useful, feel free to leave a star to help others find it!
 
@@ -23,6 +23,7 @@ If you find this useful, feel free to leave a star to help others find it!
 - Full keyboard layout with per-key tested/pressed tracking
 - Mouse button click counter with scroll wheel and side button detection
 - Gamepad input tester with SVG controller diagram, per-button press counters, and analog trigger meters
+- Fullscreen display tests for dead pixels, backlight uniformity, color accuracy, gradient banding, and sharpness
 - All processing handled locally in the browser via Web APIs
 
 ---
@@ -32,12 +33,31 @@ If you find this useful, feel free to leave a star to help others find it!
 
 | Module                | Description                                                                                                |
 | --------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Headphones / speakers | Pick an output device, play a tone to the left channel, right channel, or both                             |
+| Headphones / Speakers | Pick an output device, play a tone to the left channel, right channel, or both                             |
 | Microphone            | Pick an input device, watch the live input level, and record then play back to hear what your mic captures |
 | Keyboard              | Press keys to see them light up; tracks which keys have been tested                                        |
 | Mouse                 | Visual mouse diagram; counts clicks per button, scroll up/down events, and detects side buttons            |
-| Controller            | SVG DualSense-style diagram; tracks all buttons, analog sticks, and trigger depth via the Gamepad API      |
+| Controller            | SVG controller diagram; tracks all buttons, analog sticks, and trigger depth via the Gamepad API           |
+| Display / Monitor     | Fullscreen tests for dead pixels, backlight uniformity, color accuracy, gradient banding, and sharpness    |
 
+
+---
+
+## Screenshots
+
+![Landing page](docs/landing.png)
+
+![Headphones / Speakers](docs/headphones.png)
+
+![Microphone](docs/microphone.png)
+
+![Keyboard](docs/keyboard.png)
+
+![Mouse](docs/mouse.png)
+
+![Controller](docs/controller.png)
+
+![Display](docs/display.png)
 
 ---
 
